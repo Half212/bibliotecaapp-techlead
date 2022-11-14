@@ -1,0 +1,47 @@
+<h1 class="mt-4">Livros</h1>
+<ol class="breadcrumb mb-1">
+    <li class="breadcrumb-item active">Consulta de Livros</li>
+</ol>
+<br />
+<div class="row">
+    <div class="col-md-2">
+        <button class="btn btn-dark" (click)="novoCadastro()">
+            <i class="fa fa-save"></i> Novo
+        </button>
+    </div>
+</div>
+<div class="flex-container">
+    <br />
+    <div class="row">
+        <div class="col-md-12">
+            <table class="table table-bordered table-hover">
+                <thead class="thead-dark">
+                    <tr class="text-center">
+                        <th></th>
+                        <th>Nome</th>
+                        <th>Autor</th>
+                        <th>Data de Cadastro</th>
+                        <th>Criador</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="text-center" *ngFor="let livro of livros" >
+                       <td routerLink ="/livros/form/{{livro.id}}"> 
+                        <button class="btn btn-outline-dark" *ngIf="authorities !== 'ROLE_ADMIN' && usuarioLogado == livro.usuarioEmail">
+                            <i class="fa fa-edit"></i>
+                        </button>
+                        <button class="btn btn-outline-dark" *ngIf="authorities == 'ROLE_ADMIN'">
+                            <i class="fa fa-edit"></i>
+                        </button>
+                       </td>
+                       <td>{{ livro.nome }}</td>
+                       <td>{{ livro.autor }}</td>
+                       <td>{{ livro.dataCadastro }}</td>
+                       <td>{{ livro.usuarioEmail }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    
+</div>

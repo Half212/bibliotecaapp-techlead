@@ -1,0 +1,31 @@
+<div id="layoutSidenav_nav">
+    <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
+        <div class="sb-sidenav-menu">
+            <div class="nav">
+                <div class="sb-sidenav-menu-heading">Biblioteca</div>
+                <a class="nav-link" routerLink="/livros" *ngIf="authorities == 'ROLE_CLIENTE'"
+                    ><div class="sb-nav-link-icon">
+                        <i class="fas fa-home"></i>
+                    </div>Consultar Acervo</a>
+                <div class="sb-sidenav-menu-heading" *ngIf="authorities == 'ROLE_ADMIN'">Gerenciamento</div>
+                <a class="nav-link collapsed" routerLink="/livros" 
+                    data-toggle="collapse" data-target="#collapseLayouts"
+                    aria-expanded="false" aria-controls="collapseLayouts"
+                     *ngIf="authorities == 'ROLE_ADMIN'"><div class="sb-nav-link-icon"><i class="fas fa-book"></i></div>
+                    Cadastro de Livros
+                </a>
+                <div class="sb-sidenav-menu-heading">Logout</div>
+                <a class="nav-link collapsed" (click)="logout($event)" href=""
+                    data-toggle="collapse" data-target="#collapseLayouts"
+                    aria-expanded="false" aria-controls="collapseLayouts"
+                    ><div class="sb-nav-link-icon"><i class="fas fa-sign-out-alt"></i></div>
+                    Sair
+                </a>
+            </div>
+        </div>
+        <div class="sb-sidenav-footer">
+            <div class="small">Usuário Logado:</div>
+            {{usuarioLogado}}
+        </div>
+    </nav>
+</div>

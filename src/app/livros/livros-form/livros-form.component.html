@@ -1,0 +1,87 @@
+<h1 class="mt-4">Livros</h1>
+<ol class="breadcrumb mb-1">
+    <li class="breadcrumb-item active">{{livro.id ? 'Edição' : 'Cadastro'}}</li>
+</ol>
+<div class="flex-container align-items">
+<br/>
+    <form #livroForm="ngForm" (ngSubmit)="onSubmit()">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="alert alert-success" role="alert" *ngIf="success==true">
+                    Livro salvo/atualizado com sucesso!
+                </div>
+                <div class="alert alert-danger" role="alert" *ngFor="let erro of errors">
+                    {{ erro }}
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-5" *ngIf="livro.id">
+                <div class="form-group">
+                    <label>Data Cadastro:</label>
+                    <input type="text" class="form-control"  
+                        [ngModel]="livro.dataCadastro" name="dataCadastro" disabled="true"/>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-5">
+                <div class="form-group">
+                    <label>Nome: *</label>
+                    <input type="text" class="form-control" 
+                        [(ngModel)]="livro.nome" name="nome"  />
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-5">
+                <div class="form-group">
+                    <label>Autor: *</label>
+                    <input type="text" class="form-control"
+                        [(ngModel)]="livro.autor" name="autor"/>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-1">
+                <button type="button" class="btn btn-primary" (click)="voltarParaListagem()"> 
+                    Voltar
+                </button>
+            </div>
+            <div class="col-md-1">
+                <button type="submit" class="btn btn-success" *ngIf="livro.id">
+                    Atualizar
+                </button>
+            </div>
+            <div class="col-md-1">
+                <button type="button" class="btn btn-danger" (click)="preparaDeletarLivro(livro)" *ngIf="livro.id"
+                        data-toggle="modal" data-target="#modalDelecao">
+                    Deletar
+                </button>
+            </div>
+            <div class="col-md-1">
+                <button type="submit" class="btn btn-success" *ngIf="!livro.id">
+                    Salvar
+                </button>
+            </div>
+        </div>
+    </form>
+
+    <div id="modalDelecao" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4>Confirmação</h4>
+                </div>
+                <div class="modal-body" *ngIf="livroSelecionado">
+                    Confirma a deleção do livro "{{livroSelecionado.nome}}"?
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-success" (click)="deletarLivro(livro)" data-dismiss="modal">Confirmar</button>
+                    <button class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
