@@ -4,7 +4,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ## Acesso
 
-Através do heroku: https://biblioteca-app-techlead.herokuapp.com/login
+Através do heroku: https://biblioteca-app-junior.herokuapp.com//login
 
 ## Development server
 
