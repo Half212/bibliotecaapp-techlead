@@ -2,9 +2,9 @@
   "name": "biblioteca-app",
   "version": "0.0.0",
   "scripts": {
-    "heroku-postbuild": "ng build --prod",
+    "heroku-postbuild": "ng build --configuration production",
     "ng": "ng",
-    "start": "node server.js",
+    "start": "node server.js --prox-config proxy.config.js",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
@@ -34,7 +34,7 @@
     "@angular/compiler-cli": "~12.2.0",
     "typescript": "~4.3.5",
     "@angular-devkit/build-angular": "^12.2.9",
-    "express": "^4.17.1"  
+    "express": "^4.17.1"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^12.2.9",
@@ -53,5 +53,5 @@
   "optionalDependencies": {
     "fsevents": "2.3.2"
   }
-  
+
 }
